@@ -13,8 +13,9 @@ app.use(express.static(path.join(__dirname, '../build')))
 app.get('/robots', (req, res) => {
   goGetRobots()
     .then((robots) => {
-      const formattedRobots = robots.map(robot => [robot.model, robot.description]);
-      res.status(201).json(formattedRobots);
+      // const formattedRobots = robots.map(robot => [{model: robot.model, description: robot.description}]);
+      // res.status(201).json(formattedRobots);
+      res.status(201).json(robots);
     })
     .catch((error) => {
       console.log(error);
@@ -25,7 +26,7 @@ app.get('/robots', (req, res) => {
 app.post('/makeRobot', (req, res) => {
   insertRobot(req.body)
     .then(() => {
-      res.status(201);
+      res.sendStatus(201);
     })
     .catch((error) => {
       console.log(error);
