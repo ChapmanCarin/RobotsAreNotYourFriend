@@ -17,7 +17,6 @@ class App extends React.Component {
   }
 
   handleClickGet(){
-    debugger;
     axios.get('/robots')
     .then((robots) => 
     this.setState({
