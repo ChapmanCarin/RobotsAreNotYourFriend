@@ -13,8 +13,6 @@ app.use(express.static(path.join(__dirname, '../build')))
 app.get('/robots', (req, res) => {
   goGetRobots()
     .then((robots) => {
-      // const formattedRobots = robots.map(robot => [{model: robot.model, description: robot.description}]);
-      // res.status(201).json(formattedRobots);
       res.status(201).json(robots);
     })
     .catch((error) => {
