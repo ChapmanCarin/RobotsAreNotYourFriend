@@ -17,11 +17,13 @@ class App extends React.Component {
   }
 
   handleClickGet(){
+    debugger;
     axios.get('/robots')
     .then((robots) => 
     this.setState({
       robots: robots.data,
-    }))
+      })
+    )
   }
 
   handleClickMake(){
@@ -40,13 +42,19 @@ class App extends React.Component {
         </p>
       </header>
       <p>below, enter the name of one of the robots that will kill us all</p>
-      <input type="text" value={this.state.model} onChange={e => this.setState({ model: e.target.value })} />
+      <input type="text" onChange={e => this.setState({ model: e.target.value })} />
       <p>below, tell me how will it kill us</p>
-      <input type="text" value={this.state.description} onChange={e => this.setState({ description: e.target.value })} />
+      <input type="text" onChange={e => this.setState({ description: e.target.value })} />
+      <br></br>
       <br></br>
       <button onClick={this.handleClickMake} type="button">Please, by all means, click here to add your robot. Which will help bring on the apocalypse</button>
       <br></br>
-      <button onClick={this.handleClickGet} type="button"> Click to see the robots that will murder you</button>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <button onClick={this.handleClickGet} type="button"> Click here to see the robots that will murder you</button>
       <div>
         <List robots={this.state.robots} />
       </div>
@@ -56,4 +64,4 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
-// export default App;
+
