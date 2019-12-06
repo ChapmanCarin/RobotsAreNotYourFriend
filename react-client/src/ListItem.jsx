@@ -1,11 +1,14 @@
 import React from 'react';
 
 
-const ListItem = ({ robot }) => (
-  <div>
-    <p>name of robot:<b>{robot[0]}</b></p>
-    <p>how it will kill you:<b>{robot[1]}</b></p>
-  </div>
-);
+const ListItem = ({ robot }) => {
+  console.log(robot);
+  return(
+    <div>
+      <p>name of robot:<b>{robot.model}</b></p>
+      <p>how it will kill you:<b>{robot.description}</b></p>
+    </div>
+  )
+};
 
 export default ListItem;
