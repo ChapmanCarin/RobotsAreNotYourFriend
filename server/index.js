@@ -8,7 +8,7 @@ const app = express();
 const port = 4200;
 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '../build')))
+app.use(express.static(path.join(__dirname, '../react-client/build')))
 
 app.get('/robots', (req, res) => {
   goGetRobots()
