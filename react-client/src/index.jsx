@@ -14,10 +14,15 @@ class App extends React.Component {
     }
     this.handleClickGet = this.handleClickGet.bind(this);
     this.handleClickMake = this.handleClickMake.bind(this);
+    this.handleInputModel = this.handleInputModel.bind(this);
+  }
+
+  componentDidMount(){
+    // this.handleClickGet();
   }
 
   handleClickGet(){
-    axios.get('/robots')
+    return axios.get('/robots')
     .then((robots) => 
     this.setState({
       robots: robots.data,
@@ -29,7 +34,21 @@ class App extends React.Component {
     axios.post('/makeRobot', {
       model: this.state.model,
       description: this.state.description,
+    });
+    this.setState({
+      model: '',
+      description: '',
     })
+  }
+
+  handleInputModel(e){
+    this.setState({
+      model: e.target.value
+    })
+  }
+
+  handleInputDescription(e){
+
   }
 
   render() {
@@ -40,13 +59,13 @@ class App extends React.Component {
           Robots. Your future. You're welcome (to postapocalyptic hell).
         </p>
       </header>
-      <p>below, enter the name of one of the robots that will kill us all</p>
-      <input type="text" onChange={e => this.setState({ model: e.target.value })} />
-      <p>below, tell me how will it kill us</p>
-      <input type="text" onChange={e => this.setState({ description: e.target.value })} />
+      {/* <p>below, enter the name of one of the robots that will kill us all</p> */}
+      <input type="text" placeholder="enter robot name" onChange={e => this.handleInputModel(e)} />
+      {/* <p>below, tell me how will it kill us</p> */}
+      <input type="text" placeholder="enter how it'll kill us" onChange={e => this.setState({ description: e.target.value })} />
       <br></br>
       <br></br>
-      <button onClick={this.handleClickMake} type="button">Please, by all means, click here to add your robot. Which will help bring on the apocalypse</button>
+      <button onClick={this.handleClickMake} type="button">click here to add your robot to the directory</button>
       <br></br>
       <br></br>
       <br></br>
